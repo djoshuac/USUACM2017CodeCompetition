@@ -10,6 +10,12 @@ find each speech's best word:
         set the new best word
 '''
 
+def is_better_word(w1, w2):
+    if len(w1) == len(w2):
+        return w1 > w2
+    else:
+        return len(w1) > len(w2)
+
 
 # SOLUTION 2 - Refactored a bit
 def solution2():
@@ -33,7 +39,7 @@ def solution2():
         best_word_count = 0
         words_only_is_this_speech = (w for w in words if s in words[w] and len(words[w]) == 1)
         for w in words_only_is_this_speech:
-            if words[w][s] > best_word_count or words[w][s] == best_word_count and w > best_word:
+            if words[w][s] > best_word_count or (words[w][s] == best_word_count and is_better_word(w, best_word)):
                 best_word = w
                 best_word_count = words[w][s]
         if best_word == "":

@@ -1,11 +1,7 @@
 def gcd_cross(n, m, target, iterations):
-    x = (n - target) // m
-    y = (n - target) / m
-
-    if x == y:
-        return iterations + x
+    if (n - target) % m == 0:
+        return iterations + (n - target) // m
     else:
-        print(x, y)
         return -1
 
 def answer(m, q, n, p):
@@ -27,15 +23,10 @@ def answer(m, q, n, p):
             return -1
     return -1
 
-def intput():
-    return int(input())
-
 if __name__ == "__main__":
-    a = intput()
-    e = intput()
-    b = intput()
-    f = intput()
-    print(answer(a, e, b, f))
+    for _ in range(int(input())):
+        a, e, b, f = map(int, input().split())
+        print(answer(a, e, b, f))
 
 # def test(pods, target, expected):
 #     result = answer(pods[0], pods[1], target[0], target[1])
